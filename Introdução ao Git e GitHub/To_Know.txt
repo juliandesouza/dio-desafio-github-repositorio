@@ -1,0 +1,36 @@
+### Inicializar um repositório:
+
+- Na pasta, botão direito > Git Bash Here > no painel de comando: `$ git init` + Enter
+- `$ git status` mostra se os arquivos na minha pasta estão atualizados ou não;
+- Commits são versões do código;
+- Para adc um arquivo: `$ git add “nome do arquivo.txt”` , para adc múltiplos arquivos `$ git add .` ;
+- Criar uma versão do código `$ git commit -m “commit inicial”`, o -m significa mensagem;
+- Para enviar arquivos do local para o repositório na nuvem, vá em GitHub e crie um repositório, dpeois pegue o link dele, volte no Git Bash e digite `$ git remote add origin` e logo em seguida cole o link que acabou de copiar; Acabei de definir para onde o meu código será enviado;
+- `$ git push` Serve para enviar o código de fato, mas ele vai pedir para qual branch desejo enviar. Geralmente envie para a master com comando `$ git push --set-upstream origin master` ou `$ git push origin master` ;
+- Quando você modificar qualquer arquivo, basta novamente aplicar o comando `$ git add .` , seguido de `$ git commit -m “nova modificação”` e `$ git push` ;
+- Para ver as versões que foram criadas no meu código é só ir em `$ git reflog`, a versão mais atual vai ser sempre a versão do topo;
+- Caso cometa algum erro e precise voltar a uma versão anterior do seu código localmente saiba que cada versão do código tem uma ID, então digite `$ git reset --hard` seguido do ID da versão que deseja retornar; quando você abrir o arquivo, verá que ele foi resetado para a versão solicitada;
+
+<aside>
+⚔️ Consulte sempre seu superior ou sua equipe para saber se essa é uma prática usual entre o time e só faça quando for realmente necessário.
+
+</aside>
+
+### Branches
+
+- `$ git branch` mostra quais branches estão disponíveis;
+- Para adicionar uma nova branch digite `$ git branch` seguido pelo nome que deseja dar; geralmente é dado o nome de staging ou o nome da funcionalidade que você dará para ela naquele momento;
+- Quando houver mais de uma branch, a que você está trabalhando atualmente ficará verde e com um * ao lado;
+- Para alterar, digite `$ git checkout` seguido do nome da branch ao qual deseja operar a partir deste momento;
+- Antes do merge, é importante que ter na sua máquina a versão mais atualizada do que está no servidor, que pode ter sido alterado por alguém do seu time. Então o comando a ser dado antes de unir branches é `$ git pull` ;
+- Para unir (merge) o código da sua branch nova com a primeira, e às vezes principal, vá para a branch que deverá receber a união, por exemplo master, através de `$ git checkout master` e então `$ git merge` seguido do nome da branch de onde vou puxar as atualizações;
+- Recapitulando:
+    1. Git pull da branch principal;
+    2. Gerar uma nova branch a partir da branch principal;
+    3. Trabalhar e adc novas funcionalidades na nova branch que criou;
+    4. Finalizar o trabalho na branch temporária;
+    5. Git checkout na branch principal;
+    6. Git pull;
+    7. Unir (merge) o código da branch temporária com a branch principal (depois de testar)
+    8. Git push da branch principal.
+- Caso você deseje que um arquivo que está na pasta não seja adicionado ao servidor, o caminho é: `$ touch .gitignore` que criará um arquivo de texto na sua pasta com o mesmo nome; nesse arquivo de texto você escreverá tudo que não deverá ser levado ao servidor, por exemplo: uma pasta de senhas chamada Senhas, no gitignore estará **Senha/** ou ainda, uma imagem chamada foto.jpg, estará **foto.jpg**, depois é só salvar o arquivo e está tudo ignorado.
